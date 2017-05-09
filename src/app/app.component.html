@@ -1,3 +1,29 @@
-<h1>
-  {{title}}
-</h1>
+  <div>
+  <h1>Cuisines</h1>  
+    <ul>
+      <li *ngFor="let c of cuisines | async"> {{ c.$key + ' - ' +c.$value }}</li>
+    </ul>
+  </div>
+  <div>
+    <h1>Restaurants</h1>
+    <ul>
+      <li *ngFor="let r of restaurants | async"> {{ r.name  }} -  {{(r.cuisineType | async)?.$value}}</li>
+    </ul>
+  </div>
+  <div>
+    <h1>Facebook Login</h1>
+      <div *ngIf="logged">
+        <h2>Hi {{ displayName }}</h2>
+        <img src="{{ photoURL }}" alt="{{ displayName }}">
+      </div>
+      <div>
+        <button *ngIf= "!logged" (click)="login()">Login</button>
+        <button *ngIf= "logged" (click)="logout()">Logout</button>
+      </div>
+  </div>
+  <div>
+    <h1>Email/Password Login</h1>
+    <div> 
+      <button (click) = "register()">Register</button>
+    </div>
+  </div>
